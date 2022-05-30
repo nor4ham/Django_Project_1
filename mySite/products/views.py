@@ -2,8 +2,6 @@ from django.shortcuts import render
 from .models import Product
 def products(requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.all()})
-def product(requset):
-    return render(requset,'products/product.html')
 def book (requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.filter(category='book')})
 def PostersPrints (requset):
@@ -22,3 +20,7 @@ def BodyProtectors (requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.filter(category='BodyProtectors')})
 def WomensRidingClothing (requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.filter(category='WomensRidingClothing')})
+def product(request,id):
+    x=Product.objects.get(pk=id)
+    return render(request,'products/product.html', {"pro" : x})
+

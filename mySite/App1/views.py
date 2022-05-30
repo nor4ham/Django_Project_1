@@ -7,8 +7,6 @@ def home(requset):
 def about(requset):
    # x={'name':'nourah','age':'22'}
     return render(requset,'pages/about.html')
-def login(requset):
-    return render(requset,'pages/login.html')
 def signup(requset):
     if requset.method ==  'POST':
         username=requset.POST.get('username')
@@ -17,8 +15,14 @@ def signup(requset):
         data.save()
     return render(requset,'pages/signup.html')
 def login(requset):
-    if requset.method ==  'POST':
+    try:
+     if requset.method ==  'POST':
         username=requset.POST.get('username')
         password=requset.POST.get('password')
-        print("hoo",Signup.objects.get(username=username,password=password))
+        data=Signup.objects.get(username=username,password=password)
+        if Signup.objects.get(username=username,password=password)==username:
+         return redirect('home')
+    except Exception as ve:
+     print(ve.__class__)     
+         
     return render(requset,'pages/login.html')

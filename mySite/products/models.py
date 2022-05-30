@@ -1,4 +1,3 @@
-from secrets import choice
 from typing import OrderedDict
 from django.db import models
 

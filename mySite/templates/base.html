@@ -115,14 +115,14 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 <li><a class="dropdown-item" href="{%url 'book'%}">Books</a></li>
-                <li><a class="dropdown-item" href="#">Posters & Prints</a></li>
-                <li><a class="dropdown-item" href="#">RIDINGBOOTS &C HAPS</a></li>
-                <li><a class="dropdown-item" href="#">Childrens Riding Wear</a></li>
-                <li><a class="dropdown-item" href="#">Helmets</a></li>
-                <li><a class="dropdown-item" href="#">Gloves</a></li>
-                <li><a class="dropdown-item" href="#">WomensTights & Breeches</a></li>
-                <li><a class="dropdown-item" href="#">Body Protectors</a></li>
-                <li><a class="dropdown-item" href="#">Womens Riding Clothing</a></li>
+                <li><a class="dropdown-item" href="{%url 'PostersPrints'%}">Posters & Prints</a></li>
+                <li><a class="dropdown-item" href="{%url 'RIDINGBOOTS'%}">RIDINGBOOTS &C HAPS</a></li>
+                <li><a class="dropdown-item" href="{%url 'ChildrensRidingWear'%}">Childrens Riding Wear</a></li>
+                <li><a class="dropdown-item" href="{%url 'Helmets'%}">Helmets</a></li>
+                <li><a class="dropdown-item" href="{%url 'Gloves'%}">Gloves</a></li>
+                <li><a class="dropdown-item" href="{%url 'WomensTightsBreeches'%}">WomensTights & Breeches</a></li>
+                <li><a class="dropdown-item" href="{%url 'BodyProtectors'%}">Body Protectors</a></li>
+                <li><a class="dropdown-item" href="{%url 'WomensRidingClothing'%}">Womens Riding Clothing</a></li>
 
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{%url 'products'%}">All Products</a></li>
@@ -141,12 +141,11 @@
 
 </head>
 <body>
-  <br>  <br>
-<center>
+
   {% block content %}
   {% endblock content %}
-</center>
-  <br>
+
+ 
   {% include 'footer.html' %}
 </body>
 
