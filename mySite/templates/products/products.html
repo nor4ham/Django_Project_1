@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{%block content%}
+
+
+<center>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for x in pro %}
+    <div class="col">
+      <div class="card">
+        <img src="{{x.image.url}}" class="card-img-top" alt="{{x.name}}"width="250" height="250" >
+        <div class="card-body">
+          <h5 class="card-title">{{x.name|slice:":30"}})</h5>
+          <p class="card-text">{{x.content|slice:":40"}}</p>
+          <button type="button" class="btn btn-secondary" disabled>add</button>
+        </div>
+      </div>
+    </div>
+    
+{% endfor %}
+  </div>
+</center>
+{%endblock content%}
