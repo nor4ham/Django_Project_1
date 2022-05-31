@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,resolve_url
  # Create your views here.
 from .models import Signup
 
@@ -20,8 +20,7 @@ def login(requset):
         username=requset.POST.get('username')
         password=requset.POST.get('password')
         data=Signup.objects.get(username=username,password=password)
-        if Signup.objects.get(username=username,password=password)==username:
-         return redirect('home')
+        return redirect(resolve_url("home"))
     except Exception as ve:
      print(ve.__class__)     
          

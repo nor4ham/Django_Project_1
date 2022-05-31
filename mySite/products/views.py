@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product,Comment
+from .forms import CommentForm 
+
 def products(requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.all()})
 def book (requset):
@@ -22,5 +24,21 @@ def WomensRidingClothing (requset):
     return render(requset,'products/products.html',	{'pro':Product.objects.filter(category='WomensRidingClothing')})
 def product(request,id):
     x=Product.objects.get(pk=id)
-    return render(request,'products/product.html', {"pro" : x})
+    comments=x.comments.all()
+    comment_form=CommentForm()
+    if request.method=='POST':
+     comment_form= CommentForm(data=request.POST)
+     print("x",x)
+     if comment_form.is_valid():
+         new_comment=comment_form.save(commit=False)
+         new_comment.product=x
+         new_comment.save() 
+         comment_form=CommentForm()
+    else:
+        comment_form= CommentForm()
+    return render(request,'products/product.html', {"pro" : x,'comments':comments,'newComment':comment_form})
+def delete_product(request,id):
+    x=Product.objects.get(pk=id).delete()
+    return render(request,'products/products.html',{'pro':Product.objects.all()})
+
 

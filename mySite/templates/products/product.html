@@ -4,7 +4,23 @@
 <!------ Include the above in your HEAD tag ---------->
 <style>
 
+body{margin-top:20px;}
 
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
     /*****************globals*************/
     body {
       font-family: 'open sans';
@@ -228,7 +244,7 @@
                                 <span class="color blue"></span>
                             </h5>
                             <div class="action">
-                                <button class="add-to-cart btn btn-default" type="button">add</button>
+                               <button class="add-to-cart btn btn-default" type="button">add</button>
                                 <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                             </div>
                         </div>
@@ -236,7 +252,55 @@
                 </div>
             </div>
         </div>
-      </body>
-    </html>
+
+        <div class="container">
+          <div class="row bootstrap snippets bootdeys">
+              <div class="col-md-8 col-sm-12">
+                  <div class="comment-wrapper">
+                      <div class="panel panel-info">
+                          <div class="panel-heading">
+                              Comment panel
+                          </div>
+
+                          <div class="panel-body">
+              <!--          <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>-->      
+                              <br>
+                              <form method="POST">
+                                {% csrf_token %}
+                              {{newComment}}
+                              <input type="submit" class="btn btn-info pull-right" value="Post">
+                              <div class="clearfix"></div>
+                            </form>
+                              <hr>
+                              <ul class="media-list">
+                                {% if comments %}
+                                {% for c in comments %}
+                                  <li class="media">
+                                      <a href="#" class="pull-left">
+                                          <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                      </a>
+                                      <div class="media-body">
+                                          <span class="text-muted pull-right">
+                                              <small class="text-muted"> {{ c.comment_daate}}  </small>
+                                          </span>
+                                          <strong class="text-success">@anomalous    </strong>
+                                          <p>
+                                            {{ c.body}}
+                                          </p>
+                                      </div>
+                                  </li>
+                                  {% endfor %}
+                                  {%else%}
+                                  <p> No Comments Avairbale</p>
+                                  {% endif %}
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+          
+              </div>
+          </div>
+          </div>
+          
     
 {%endblock content%}

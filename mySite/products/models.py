@@ -21,3 +21,14 @@ class Product(models.Model):
     class Meta:   
         verbose_name='product_table'
         ordering=['-price']
+
+class Comment(models.Model):
+ 
+    body=models.TextField(verbose_name='')
+    comment_daate=models.DateTimeField(auto_now=True)
+    product =models.ForeignKey(Product,on_delete=models.CASCADE,related_name='comments')
+    def __str__(self):
+        return self.body
+    class Meta:   
+        verbose_name='Comment_table'    
+        ordering=['-comment_daate']
